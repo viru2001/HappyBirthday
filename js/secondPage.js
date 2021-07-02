@@ -9,7 +9,7 @@ var w = canvas.width = window.innerWidth,
 		hh = h / 2,
 		
 		opts = {
-			strings: [ 'HAPPY', 'BIRTHDAY!' ,'MADAN'],
+			strings: [ 'HAPPY', 'BIRTHDAY!' ,'AJAY'],
             charSize: 100,
 			charSpacing: 90,
 			lineHeight: 200,
