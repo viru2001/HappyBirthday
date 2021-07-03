@@ -202,11 +202,11 @@ setTimeout( () => {
     // location.replace("secondPage.html");
     document.getElementById("balloons").style.display = "none";
     document.getElementById("poster").style.display = "block";
-},25000 ); 
+},24000 ); 
 
 setTimeout ( () =>{
   location.replace("thirdPage.html");
-},45000);
+},46000);
 // setTimeout( () => {
 //   // location.replace("secondPage.html");
 //   // ctx.clearRect(0, 0, canvas.width, canvas.height);
