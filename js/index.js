@@ -109,6 +109,6 @@ Draw();
 
 let presents = document.getElementsByClassName('presents')[0];
 presents.addEventListener('click',() => {
-    location.replace("firstPage.html")
+    location.replace("mainPage.html")  
 })
-
+ 

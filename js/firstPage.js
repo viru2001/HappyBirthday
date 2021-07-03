@@ -1,5 +1,5 @@
 var c = document.getElementById("c");
-var ctx = c.getContext("2d");
+var ctx1 = c.getContext("2d");
 
 var bc = document.createElement("canvas");
 var bCtx = bc.getContext("2d");
@@ -36,9 +36,9 @@ function Draw() {
 
   updateBallons(bCtx);
 
-  ctx.clearRect(0, 0, cw, ch);
+  ctx1.clearRect(0, 0, cw, ch);
   var img = bc;
-  ctx.drawImage(img, 0, 0);
+  ctx1.drawImage(img, 0, 0);
 
   requestId = window.requestAnimationFrame(Draw);
 }
@@ -61,13 +61,13 @@ setTimeout(function() {
   window.addEventListener('resize', Init, false);
 }, 15);
 
-function updateBallons(ctx) {
+function updateBallons(ctx1) {
   frames += 1;
   if (frames % 37 == 0 && balloons.length < 37) {
     var balloon = new Balloon();
     balloons.push(balloon);
   }
-  ctx.clearRect(0, 0, cw, ch);
+  ctx1.clearRect(0, 0, cw, ch);
 
   for (var i = 0; i < balloons.length; i++) {
     var b = balloons[i];
@@ -77,15 +77,15 @@ function updateBallons(ctx) {
       b.y = parseInt(ch + b.r + b.R);
     }
 
-    var p = thread(b, ctx);
+    var p = thread(b, ctx1);
     b.cx = p.x;
     b.cy = p.y - b.R;
-    ctx.fillStyle = Grd(p.x, p.y, b.r, b.hue)
-    drawBalloon(b, ctx);
+    ctx1.fillStyle = Grd(p.x, p.y, b.r, b.hue)
+    drawBalloon(b, ctx1);
   }
 }
 
-function drawBalloon(b, ctx) {
+function drawBalloon(b, ctx1) {
 
   var or = b.r * kappa; // offset
 
@@ -151,29 +151,29 @@ function drawBalloon(b, ctx) {
   }
 
   //balloon
-  ctx.beginPath();
-  ctx.moveTo(p4.x, p4.y);
-  ctx.bezierCurveTo(pc42.x, pc42.y, pc11.x, pc11.y, p1.x, p1.y);
-  ctx.bezierCurveTo(pc12.x, pc12.y, pc21.x, pc21.y, p2.x, p2.y);
-  ctx.bezierCurveTo(pc22.x, pc22.y, pc31.x, pc31.y, p3.x, p3.y);
-  ctx.bezierCurveTo(pc32.x, pc32.y, pc41.x, pc41.y, p4.x, p4.y);
+  ctx1.beginPath();
+  ctx1.moveTo(p4.x, p4.y);
+  ctx1.bezierCurveTo(pc42.x, pc42.y, pc11.x, pc11.y, p1.x, p1.y);
+  ctx1.bezierCurveTo(pc12.x, pc12.y, pc21.x, pc21.y, p2.x, p2.y);
+  ctx1.bezierCurveTo(pc22.x, pc22.y, pc31.x, pc31.y, p3.x, p3.y);
+  ctx1.bezierCurveTo(pc32.x, pc32.y, pc41.x, pc41.y, p4.x, p4.y);
   //knot
-  ctx.lineTo(t1.x, t1.y);
-  ctx.lineTo(t2.x, t2.y);
-  ctx.closePath();
-  ctx.fill();
+  ctx1.lineTo(t1.x, t1.y);
+  ctx1.lineTo(t2.x, t2.y);
+  ctx1.closePath();
+  ctx1.fill();
 }
 
-function thread(b, ctx) {
-  ctx.beginPath();
+function thread(b, ctx1) {
+  ctx1.beginPath();
 
   for (var i = b.a; i > 0; i -= 1) {
     var t = i * rad;
     x = b.x + b.pm * 50 * Math.cos(b.k * t - frames * rad)
     y = b.y + b.pm * 25 * Math.sin(b.k * t - frames * rad) + 50 * t
-    ctx.lineTo(x, y)
+    ctx1.lineTo(x, y)
   }
-  ctx.stroke();
+  ctx1.stroke();
   return p = {
     x: x,
     y: y
@@ -181,7 +181,7 @@ function thread(b, ctx) {
 }
 
 function Grd(x, y, r, hue) {
-  grd = ctx.createRadialGradient(x - .5 * r, y - 1.7 * r, 0, x - .5 * r, y - 1.7 * r, r);
+  grd = ctx1.createRadialGradient(x - .5 * r, y - 1.7 * r, 0, x - .5 * r, y - 1.7 * r, r);
   grd.addColorStop(0, 'hsla(' + hue + ',100%,65%,.95)');
   grd.addColorStop(0.4, 'hsla(' + hue + ',100%,45%,.85)');
   grd.addColorStop(1, 'hsla(' + hue + ',100%,25%,.80)');
@@ -192,7 +192,33 @@ function randomIntFromInterval(mn, mx) {
   return ~~(Math.random() * (mx - mn + 1) + mn);
 }
 
+$( document ).ready(function() {
+  // console.log( "ready!" );
+    document.getElementById("poster").style.display = "none";
+    document.getElementById("balloons").style.display = "block";
+});
 
 setTimeout( () => {
-    location.replace("secondPage.html");
-},20000 );
+    // location.replace("secondPage.html");
+    document.getElementById("balloons").style.display = "none";
+    document.getElementById("poster").style.display = "block";
+},25000 ); 
+
+setTimeout ( () =>{
+  location.replace("thirdPage.html");
+},45000);
+// setTimeout( () => {
+//   // location.replace("secondPage.html");
+//   // ctx.clearRect(0, 0, canvas.width, canvas.height);
+//   // document.getElementById("balloons").style.display = "none";
+//   // document.getElementById("poster").style.display = "none";
+//   // document.getElementById("pics").style.display = "block";
+//   // document.getElementsByClassName("carousel")[0].style.display = "block";
+
+// },45000 ); 
+
+
+// setTimeout( () => {
+//   // location.replace("secondPage.html");
+//   document.getElementById("poster").style.display = "block";
+// },40000 ); 

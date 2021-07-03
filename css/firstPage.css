@@ -13,7 +13,10 @@
   }
   
   body {
-    background: radial-gradient(#fec215, #f8a90c);
+    /* background: radial-gradient(#fec215, #f8a90c); */
+    background-image: url('../images/background.jpg');
+    background-size: 100% 90%;
+    background-repeat:no-repeat ;
   }
   
   .text {

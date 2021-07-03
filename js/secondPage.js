@@ -9,7 +9,7 @@ var w = canvas.width = window.innerWidth,
 		hh = h / 2,
 		
 		opts = {
-			strings: [ 'HAPPY', 'BIRTHDAY!' ,'AJAY'],
+			strings: [ 'HAPPY', 'BIRTHDAY!' ,'RITHWIK'],
             charSize: 100,
 			charSpacing: 90,
 			lineHeight: 200,
@@ -404,8 +404,8 @@ window.addEventListener( 'resize', function(){
 	ctx.font = opts.charSize + 'px Verdana';
 })
 
-setTimeout(() => {
-    // location.replace("index.html");
-   location.replace("thirdPage.html");
-}, 20000);
+// setTimeout(() => {
+//     // location.replace("index.html");
+//    location.replace("thirdPage.html");
+// }, 20000); 
 
